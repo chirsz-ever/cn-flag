@@ -10,7 +10,7 @@ StarPosition = namedtuple('StarPosition','cx cy angle')
 cn_flag_template = jinja2.Template(
 '''
 <?xml version="1.0" standalone="no"?>
-<svg id="cn-flag" width="300" height="200" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="cn-flag" width="600" height="400" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="star5" viewBox="-1 -1 2 2">
     <polygon points="{{ star_points }}" fill="yellow"/>
   </symbol>
