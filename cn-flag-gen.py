@@ -12,16 +12,16 @@ cn_flag_template = jinja2.Template(
 <?xml version="1.0" standalone="no"?>
 <svg id="cn-flag" width="600" height="400" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="star5" viewBox="-1 -1 2 2">
-    <polygon points="{{ star_points }}" fill="yellow"/>
+    <polygon points="{{ star_points }}" fill="{{ color_yellow }}"/>
   </symbol>
-  <rect width="30" height="20" fill="red"/>
+  <rect width="30" height="20" fill="{{ color_red }}"/>
   <use xlink:href="#star5" x="{{ mp.cx-3 }}"  y="{{ mp.cy-3 }}" width="6" height="6"/>
 {%- for p in sstar_positions %}
   <use xlink:href="#star5" x="{{ p.cx-1 }}"  y="{{ p.cy-1 }}" width="2" height="2" transform="rotate({{ "%f,%d,%d"%(p.angle,p.cx,p.cy) }})"/>
 {%- endfor %}
 {% if show_aux %}
   <!-- auxiliary lines -->
-{%- set aux_style = 'stroke="gray" stroke-width="0.01"' %}
+{%- set aux_style = 'stroke="{}" stroke-width="0.02"'.format(color_aux) %}
 {% for i in range(1,10) %}
   <line x1="0" y1="{{ i }}" x2="15" y2="{{ i }}" {{ aux_style }} />
 {%- endfor %}
@@ -38,6 +38,12 @@ cn_flag_template = jinja2.Template(
 {% endif -%}
 </svg> 
 '''.lstrip())
+
+# follow the http://www.npc.gov.cn/npc/gqgggh/202012/7ac70d3a4cfb480ea9edc872bdc85578.shtml
+color_red = "#ee1c25"
+color_yellow = "#ffff00"
+
+color_aux = "#404040"
 
 # points on a star
 star_points = ''
